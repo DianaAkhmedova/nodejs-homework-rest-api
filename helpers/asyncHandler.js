@@ -1,4 +1,3 @@
-const e = require("express");
 const HttpError = require("./HttpError");
 
 const asyncHandler = async (clb, res, next) => {
@@ -8,6 +7,7 @@ const asyncHandler = async (clb, res, next) => {
     if (!result) {
       throw HttpError(404);
     }
+
     res.json(result);
   } catch (error) {
     next(error);
