@@ -2,8 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 
-const { asyncHandler } = require("../../controllers");
-const { addSchema } = require("../../schemas");
+const asyncHandler = require("../../controllers");
+const addSchema = require("../../schemas");
 
 const {
   listContacts,
