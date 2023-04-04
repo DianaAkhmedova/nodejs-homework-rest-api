@@ -1,8 +1,9 @@
 const express = require("express");
-const Joi = require("joi");
+
 const router = express.Router();
 
-const { asyncHandler } = require("../../helpers");
+const { asyncHandler } = require("../../controllers");
+const { addSchema } = require("../../schemas");
 
 const {
   listContacts,
@@ -11,12 +12,6 @@ const {
   addContact,
   updateContact,
 } = require("../../models");
-
-const addSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().required(),
-  phone: Joi.string().required(),
-});
 
 router.get("/", async (req, res, next) => {
   asyncHandler(() => listContacts(), res, next);
