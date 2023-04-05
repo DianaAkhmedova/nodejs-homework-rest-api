@@ -11,7 +11,7 @@ const {
   removeContact,
   addContact,
   updateContact,
-} = require("../../models");
+} = require("../../controllers");
 
 router.get("/", async (req, res, next) => {
   asyncHandler(() => listContacts(), res, next);
