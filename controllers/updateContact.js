@@ -1,4 +1,4 @@
-const { asyncHandler } = require("../helpers");
+const ctrlWrapper = require("../utils");
 const addSchema = require("../schemas");
 const { update } = require("../models");
 
@@ -14,7 +14,7 @@ const updateContact = async (req, res, next) => {
       message: "Missing required name field",
     });
   }
-  asyncHandler(() => update(req.params.contactId, req.body), res, next);
+  res.json(await update(req.params.contactId, req.body));
 };
 
-module.exports = updateContact;
+module.exports = { updateContact: ctrlWrapper(updateContact) };

@@ -1,8 +1,13 @@
-const { asyncHandler } = require("../helpers");
 const { getContact } = require("../models");
+const ctrlWrapper = require("../utils");
+const HttpError = require("../helpers");
 
-const getContactById = (req, res, next) => {
-  asyncHandler(() => getContact(req.params.contactId), res, next);
+const getContactById = async (req, res) => {
+  const result = await getContact(req.params.contactId);
+  if (!result) {
+    throw HttpError(404);
+  }
+  res.json(result);
 };
 
-module.exports = getContactById;
+module.exports = { getContactById: ctrlWrapper(getContactById) };
