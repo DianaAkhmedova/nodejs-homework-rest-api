@@ -1,3 +1,9 @@
-const contactsPath = require("./contactsPath");
+const { listContacts, getContact, remove, add, update } = require("./contacts");
 
-module.exports = contactsPath;
+module.exports = {
+  listContacts,
+  getContact,
+  remove,
+  add,
+  update,
+};

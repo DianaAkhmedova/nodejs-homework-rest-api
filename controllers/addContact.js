@@ -1,18 +1,16 @@
-const fs = require("fs/promises");
-const { nanoid } = require("nanoid");
-const contactsPath = require("../models");
-const listContacts = require("./listContacts");
+const { asyncHandler } = require("../helpers");
+const addSchema = require("../schemas");
+const { add } = require("../models");
 
-const addContact = async (body) => {
-  const contacts = await listContacts();
-  const newContact = {
-    id: nanoid(),
-    ...body,
-  };
-
-  contacts.push(newContact);
-  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
-  return newContact;
+const addContact = async (req, res, next) => {
+  const { error } = addSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({
+      message: "Missing required name field",
+    });
+  }
+  res.status(201);
+  asyncHandler(() => add(req.body), res, next);
 };
 
 module.exports = addContact;
