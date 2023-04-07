@@ -1,6 +1,6 @@
+const Contact = require("../models");
 const ctrlWrapper = require("../utils");
-const addSchema = require("../schemas");
-const { add } = require("../models");
+const { addSchema } = require("../schemas");
 
 const addContact = async (req, res) => {
   const { error } = addSchema.validate(req.body);
@@ -9,7 +9,7 @@ const addContact = async (req, res) => {
       message: "Missing required name field",
     });
   }
-  res.status(201).json(await add(req.body));
+  res.status(201).json(await Contact.create(req.body));
 };
 
 module.exports = { addContact: ctrlWrapper(addContact) };
