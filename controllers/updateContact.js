@@ -1,8 +1,8 @@
+const Contact = require("../models");
 const ctrlWrapper = require("../utils");
-const addSchema = require("../schemas");
-const { update } = require("../models");
+const { addSchema } = require("../schemas");
 
-const updateContact = async (req, res, next) => {
+const updateContact = async (req, res) => {
   const { error } = addSchema.validate(req.body);
   if (!Object.keys(req.body).length) {
     return res.status(400).json({
@@ -14,7 +14,11 @@ const updateContact = async (req, res, next) => {
       message: "Missing required name field",
     });
   }
-  res.json(await update(req.params.contactId, req.body));
+  res.json(
+    await Contact.findByIdAndUpdate(req.params.contactId, req.body, {
+      new: true,
+    })
+  );
 };
 
 module.exports = { updateContact: ctrlWrapper(updateContact) };
