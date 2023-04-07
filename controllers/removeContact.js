@@ -1,9 +1,9 @@
+const Contact = require("../models");
 const ctrlWrapper = require("../utils");
 const HttpError = require("../helpers");
-const { remove } = require("../models");
 
-const removeContact = async (req, res, next) => {
-  const result = await remove(req.params.contactId);
+const removeContact = async (req, res) => {
+  const result = await Contact.findByIdAndDelete(req.params.contactId);
   if (!result) {
     throw HttpError(404);
   }
