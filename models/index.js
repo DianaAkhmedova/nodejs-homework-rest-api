@@ -1,9 +1,3 @@
-const { listContacts, getContact, remove, add, update } = require("./contacts");
+const Contact = require("./contact");
 
-module.exports = {
-  listContacts,
-  getContact,
-  remove,
-  add,
-  update,
-};
+module.exports = Contact;
