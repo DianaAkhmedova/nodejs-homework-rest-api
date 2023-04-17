@@ -1,6 +1,6 @@
-const Contact = require("../models");
-const ctrlWrapper = require("../utils");
-const { updateFavoriteSchema } = require("../schemas");
+const { Contact } = require("../../models");
+const { ctrlWrapper } = require("../../utils");
+const { updateFavoriteSchema } = require("../../schemas");
 
 const updateFavorite = async (req, res) => {
   const { error } = updateFavoriteSchema.validate(req.body);

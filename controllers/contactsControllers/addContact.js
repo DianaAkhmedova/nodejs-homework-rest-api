@@ -1,6 +1,6 @@
-const Contact = require("../models");
-const ctrlWrapper = require("../utils");
-const { addSchema } = require("../schemas");
+const { Contact } = require("../../models");
+const { ctrlWrapper } = require("../../utils");
+const { addSchema } = require("../../schemas");
 
 const addContact = async (req, res) => {
   const { error } = addSchema.validate(req.body);

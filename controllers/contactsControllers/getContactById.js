@@ -1,7 +1,7 @@
-const Contact = require("../models");
+const { Contact } = require("../../models");
 
-const ctrlWrapper = require("../utils");
-const HttpError = require("../helpers");
+const { ctrlWrapper } = require("../../utils");
+const {HttpError} = require("../../helpers");
 
 const getContactById = async (req, res) => {
   const result = await Contact.findById(req.params.contactId);
