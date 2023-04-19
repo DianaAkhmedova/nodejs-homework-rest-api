@@ -9,7 +9,8 @@ const addContact = async (req, res) => {
       message: "Missing required name field",
     });
   }
-  res.status(201).json(await Contact.create(req.body));
+  const { _id: owner } = req.user;
+  res.status(201).json(await Contact.create({ ...req.body, owner }));
 };
 
 module.exports = { addContact: ctrlWrapper(addContact) };
