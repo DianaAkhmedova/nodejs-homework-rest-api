@@ -22,7 +22,10 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "user",
   },
-  token: String,
+  token: {
+    type: String,
+    default: "",
+  },
 });
 
 userSchema.post("save", handleMongooseError);
@@ -38,7 +41,7 @@ const loginSchema = Joi.object({
 });
 
 const updateSubscriptionSchema = Joi.object({
-  subscription: Joi.boolean().required(),
+  subscription: Joi.string().valid("starter", "pro", "business").required(),
 });
 
 module.exports = {
