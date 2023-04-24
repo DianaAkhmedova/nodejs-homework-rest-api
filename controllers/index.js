@@ -1,9 +1,19 @@
-const { getAllContacts } = require("./getAllContacts");
-const { getContactById } = require("./getContactById");
-const { removeContact } = require("./removeContact");
-const { addContact } = require("./addContact");
-const { updateContact } = require("./updateContact");
-const { updateFavorite } = require("./updateFavorite");
+const {
+  getAllContacts,
+  getContactById,
+  removeContact,
+  addContact,
+  updateContact,
+  updateFavorite,
+} = require("./contactsControllers");
+
+const {
+  register,
+  login,
+  getCurrent,
+  logout,
+  updateSubscription,
+} = require("./authControllers");
 
 module.exports = {
   getAllContacts,
@@ -12,4 +22,9 @@ module.exports = {
   addContact,
   updateContact,
   updateFavorite,
+  register,
+  login,
+  getCurrent,
+  logout,
+  updateSubscription,
 };

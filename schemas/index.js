@@ -4,4 +4,19 @@ const {
   updateFavoriteSchema,
 } = require("./contactSchema");
 
-module.exports = { contactSchema, addSchema, updateFavoriteSchema };
+const {
+  userSchema,
+  registerSchema,
+  loginSchema,
+  updateSubscriptionSchema,
+} = require("./userSchema");
+
+module.exports = {
+  contactSchema,
+  addSchema,
+  updateFavoriteSchema,
+  userSchema,
+  registerSchema,
+  loginSchema,
+  updateSubscriptionSchema,
+};
