@@ -9,12 +9,17 @@ const { authenticate, upload } = require("../../middlewares");
 const {
   registerSchema,
   loginSchema,
+  emailSchema,
   updateSubscriptionSchema,
 } = require("../../schemas");
 
 const ctrl = require("../../controllers");
 
 router.post("/register", validateBody(registerSchema), ctrl.register);
+
+router.get("/verify/:verificationToken", ctrl.verify);
+
+router.post("/verify", validateBody(emailSchema), ctrl.resendVerifyEmail);
 
 router.post("/login", validateBody(loginSchema), ctrl.login);
 
